@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-
+        
         <TextBlock Text="Жанр" Margin="5"/>
         <ComboBox  x:Name="comboGenre" Margin="5" SelectionChanged="comboGenre_SelectionChanged"/>
 
-        <ListBox x:Name="listFilm" Height="100" Margin="5" SelectionChanged="listFilm_SelectionChanged"/>
+        <ListBox x:Name="listFilm" Height="100" Margin="5"/>
 
-        <Button x:Name="showDesc" Content="Открыть описание" Margin="5"/>
-        <TextBlock x:Name="txtDesc" Text="Описание: " Margin="5"/>
+        <Button x:Name="showDesc" Content="Открыть описание" Margin="5" Click="showDesc_Click"/>
+        <TextBlock x:Name="txtDesc" Text="Описание:" TextWrapping="Wrap" Margin="5"/>
+        
     </StackPanel>
 </Window>

@@ -29,11 +29,11 @@ namespace WpfApp2
         {
             InitializeComponent();
 
-            films.Add(new Film { Title = "Колобок", Genre = "Хоррор", Description = "Страшное фэнтези и спин-офф популярной российской франшизы о Белогорье." });
-            films.Add(new Film { Title = "Твое сердце будет разбито", Genre = "Хоррор", Description = "Популярный роман в жанре молодежной прозы писательницы Анны Джейн." });
-            films.Add(new Film { Title = "Чебурашка 3", Genre = "Кринж комедия", Description = "Семейная комедия о мохнатом ушастом зверьке из далекой апельсиновой страны, который попадает в тихий приморский городок на Черном море." });
-            films.Add(new Film { Title = "Алиса в Стране чудес", Genre = "Фэнтези", Description = "Современная вольная адаптация сказки Льюиса Кэрролла, вдохновленная культовым советским радиоспектаклем 1976 года на стихи Владимира Высоцкого." });
-            films.Add(new Film { Title = "Борат", Genre = "Черная комедия", Description = "Сатирическая комедия в жанре мокьюментари, рассказывающая о путешествии эксцентричного казахстанского тележурналиста Бората Сагдиева в США." });
+            films.Add(new Film { Title = "Колобок", Genre = "Хоррор", Description = "страшное фэнтези и спин-офф популярной российской франшизы о Белогорье." });
+            films.Add(new Film { Title = "Твое сердце будет разбито", Genre = "Хоррор", Description = "популярный роман в жанре молодежной прозы писательницы Анны Джейн." });
+            films.Add(new Film { Title = "Чебурашка 3", Genre = "Кринж комедия", Description = "семейная комедия о мохнатом ушастом зверьке из далекой апельсиновой страны, который попадает в тихий приморский городок на Черном море." });
+            films.Add(new Film { Title = "Алиса в Стране чудес", Genre = "Фэнтези", Description = "современная вольная адаптация сказки Льюиса Кэрролла, вдохновленная культовым советским радиоспектаклем 1976 года на стихи Владимира Высоцкого." });
+            films.Add(new Film { Title = "Борат", Genre = "Черная комедия", Description = "сатирическая комедия в жанре мокьюментари, рассказывающая о путешествии эксцентричного казахстанского тележурналиста Бората Сагдиева в США." });
             //films.Add(new Film { Title = "", Genre = "", Description = "" });
 
             listFilm.ItemsSource = films;
@@ -52,17 +52,15 @@ namespace WpfApp2
             listFilm.ItemsSource = films.Where(f => f.Genre == selectedGenre).ToList();
         }
 
-        private void listFilm_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void showDesc_Click(object sender, RoutedEventArgs e)
         {
-            if (comboGenre.SelectedItem != null)
+            if (listFilm.SelectedItem is Film selectedFilm)
             {
-                string g = comboGenre.SelectedItem.ToString();
-
-                display = new ObservableCollection<Film>(
-                    films.Where(b => b.Genre == g)
-                    );
-
-                listFilm.ItemsSource = display;
+                txtDesc.Text = "Описание: " + selectedFilm.Description;
+            }
+            else
+            {
+                MessageBox.Show("Выберите фильм.");
             }
         }
     }
